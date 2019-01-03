@@ -1,0 +1,5 @@
+*.o
+server_test
+client_test
+.vscode
+.DS_Store
