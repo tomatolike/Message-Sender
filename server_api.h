@@ -1,23 +1,24 @@
-#ifndef _SERVER_API_
-#define _SERVER_API_
+#ifndef _SERVERAPI_
+#define _SERVERAPI_
 
-#include "../include/zookeeper.h"
+#include "include/zookeeper.h"
+
 #include "string"
 
 #define DEFAULT_TIMEOUT 10000
 
-class Server_API{
+class ServerApi{
     public:
     static bool Connect(std::string addr_port);
-    static bool Create_root(std::string path);
-    static bool Change_message(std::string message);
-    static bool Delete_root();
+    static bool CreateRoot(std::string path);
+    static bool ChangeMessage(std::string message);
+    static bool DeleteRoot();
     static void Close();
 
     private:
-    static std::string addr_port;
-    static std::string root_path;
-    static zhandle_t* zh;
+    static std::string addr_port_;
+    static std::string root_path_;
+    static zhandle_t* zh_;
 
     static void watcher(zhandle_t *zh, int type, int state, const char *path,void *watcherCtx);
     static void zk_string_completion(int rc, const char *value, const void *data);

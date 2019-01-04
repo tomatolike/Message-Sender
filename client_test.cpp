@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Client_API/Client_API.h"
+#include "client_api.h"
 
 int version = 0;
 std::string message = "";
@@ -12,21 +12,21 @@ void show_message(std::string message)
 
 int main(){
     
-    if(!Client_API::Connect("193.112.104.61:2182")){
+    if(!ClientApi::Connect("193.112.104.61:2182")){
         std::cout << "Connect Failed" << std::endl;
         return 0;
     }
 
-    if(!Client_API::Listen_root("/abc",show_message)){
+    if(!ClientApi::ListenRoot("/abc",show_message)){
         std::cout << "Listen Root Failed" << std::endl;
         return 0;
     }
 
-    version = Client_API::Get_Version();
+    version = ClientApi::GetVersion();
 
     while(true){
-        /*if(!Client_API::Version_Check(version)){
-            message = Client_API::Get_Message();
+        /*if(!ClientApi::VersionCheck(version)){
+            message = ClientApi::GetMessage();
             std::cout << message << std::endl;
         }*/
         std::string temp;
@@ -34,7 +34,7 @@ int main(){
         if(temp.compare("END") == 0)break;
     }
 
-    Client_API::Close();
+    ClientApi::Close();
     std::cout << "session close" << std::endl;
     return 0;
 }
