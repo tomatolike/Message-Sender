@@ -44,7 +44,7 @@ bool ServerApi::DeleteRoot();
 void ServerApi::Close();
 ```
 
-+ Client\_API:
++ ClientApi:
 
 ```c++
 //All methods are static.
